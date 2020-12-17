@@ -1,4 +1,8 @@
 {
+  "name": "learning-threejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
   "dependencies": {
     "@types/three": "^0.103.2",
     "three": "^0.123.0",
@@ -9,5 +13,9 @@
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server"
   }
 }
