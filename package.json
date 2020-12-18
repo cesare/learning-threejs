@@ -16,6 +16,6 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-cli serve --mode development"
   }
 }
