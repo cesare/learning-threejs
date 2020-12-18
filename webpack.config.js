@@ -1,35 +1,46 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: './src/index.ts',
+  mode: 'development',
+  entry: './src/index.ts',
 
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
-    },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  },
 
-    module: {
-        rules: [
-            {
-                test: /.(ts|tsx)?$/,
-                loader: 'ts-loader',
-                include: [path.resolve(__dirname, 'src')],
-                exclude: [/node_modules/]
-            }
-        ]
-    },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)?$/,
+        loader: 'ts-loader',
+        include: [path.resolve(__dirname, 'src')],
+        exclude: [/node_modules/]
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      }
+    ]
+  },
 
-    devServer: {
-        open: true,
-        openPage: "index.html",
-        contentBase: path.join(__dirname, "dist"),
-        watchContentBase: true,
-        port: 8080
-    },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html"
+    })
+  ],
 
-    resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
-        modules: ["node_modules"]
-    }
+  devServer: {
+    open: true,
+    openPage: "index.html",
+    contentBase: path.join(__dirname, "dist"),
+    watchContentBase: true,
+    port: 8080
+  },
+
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+    modules: ["node_modules"]
+  }
 };
